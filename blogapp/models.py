@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 class Post(models.Model):
     title=models.CharField(max_length=100)
@@ -18,3 +19,11 @@ class Comments(models.Model):
     
     def __str__(self):
      return f'Comment by {self.name}'
+ 
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    bio = models.TextField(blank=True)
+    avatar = models.ImageField(upload_to='avatars/', default='avatars/default.png')
+
+    def __str__(self):
+        return self.user.username
