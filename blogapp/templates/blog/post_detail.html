@@ -1,90 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{{ post.title }}</title>
     <style>
         body {
-            background: linear-gradient(135deg, #c2e9fb 0%, #a1c4fd 100%);
+            background: #ffe6f0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
+            margin: 0; padding: 0;
+            color: #4b2e3b;
         }
         .container {
             max-width: 800px;
+            background: white;
             margin: 40px auto;
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            padding: 30px 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(255, 105, 180, 0.3);
         }
-        h1, h2 {
+        h1 {
             text-align: center;
-            color: #fff;
+            color: #d6336c;
+            margin-bottom: 15px;
+            font-weight: 700;
         }
         p {
-            color: #fff;
-            text-align: center;
+            line-height: 1.6;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+        em {
+            color: #b35372;
+            font-size: 0.9rem;
+        }
+        .comments-section {
+            margin-top: 40px;
         }
         .comment {
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 10px;
-            padding: 15px;
-            margin: 10px 0;
+            background: #ffe1ec;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            border: 1px solid #f5a6c4;
+            box-shadow: 0 3px 8px rgba(230, 140, 190, 0.2);
+        }
+        .comment strong {
+            color: #d6336c;
+            font-weight: 600;
+        }
+        .comment p {
+            margin: 5px 0;
+            color: #6b3a4e;
+        }
+        .comment em {
+            font-size: 0.8rem;
+            color: #a45a75;
+        }
+        .comment-form {
+            margin-top: 30px;
+        }
+        .comment-form h2 {
+            color: #d6336c;
+            margin-bottom: 15px;
         }
         form {
-            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
         }
         form input, form textarea {
-            width: 100%;
-            padding: 10px;
-            margin: 5px 0 15px;
-            border: none;
-            border-radius: 5px;
-            backdrop-filter: blur(5px);
+            padding: 10px 12px;
+            border-radius: 8px;
+            border: 1.5px solid #f9a2c6;
+            font-size: 1rem;
+            resize: vertical;
         }
-        button {
-            background: #007BFF;
+        form textarea {
+            min-height: 80px;
+        }
+        form button {
+            background: #d6336c;
             color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
+            border-radius: 12px;
+            padding: 12px;
+            font-size: 1.1rem;
             cursor: pointer;
+            transition: background 0.3s ease;
         }
-        button:hover {
-            background: #0056b3;
+        form button:hover {
+            background: #a02249;
         }
     </style>
 </head>
 <body>
-
     <div class="container">
         <h1>{{ post.title }}</h1>
         <p>{{ post.content }}</p>
         <p><em>Posted on {{ post.date_posted }}</em></p>
 
-        <div>
+        <div class="comments-section">
             <h2>Comments</h2>
             {% for comment in comments %}
                 <div class="comment">
-                    <p><strong>{{ comment.name }}</strong> - {{ comment.email }}</p>
+                    <p><strong>{{ comment.name }}</strong> ({{ comment.email }})</p>
                     <p>{{ comment.body }}</p>
-                    <small>Added on {{ comment.date_added }}</small>
+                    <p><em>Added on {{ comment.date_added }}</em></p>
                 </div>
+            {% empty %}
+                <p>No comments yet. Be the first!</p>
             {% endfor %}
         </div>
 
-        <div>
-            <h2>Add a Comment</h2>
+        <div class="comment-form">
+            <h2>Add a comment</h2>
             <form method="post">
                 {% csrf_token %}
                 {{ comment_form.as_p }}
-                <button type="submit">Add Comment</button>
+                <button type="submit">Add comment</button>
             </form>
         </div>
     </div>
-
 </body>
 </html>

@@ -1,63 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Post</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% if form.instance.pk %}Edit Post{% else %}New Post{% endif %}</title>
     <style>
         body {
-            background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+            background: #ffe6f0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
+            margin: 0; padding: 0;
+            color: #4b2e3b;
         }
         .container {
             max-width: 600px;
+            background: white;
             margin: 60px auto;
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            padding: 30px 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(255, 105, 180, 0.3);
         }
         h1 {
             text-align: center;
-            color: #fff;
+            color: #d6336c;
             margin-bottom: 30px;
+            font-weight: 700;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        form label {
+            font-weight: 600;
+            color: #a94a6b;
         }
         form input, form textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: none;
-            border-radius: 5px;
-            backdrop-filter: blur(5px);
+            padding: 12px 15px;
+            border-radius: 12px;
+            border: 1.5px solid #f9a2c6;
+            font-size: 1rem;
+            font-family: inherit;
+            resize: vertical;
         }
-        button {
-            width: 100%;
-            background: #007BFF;
+        form textarea {
+            min-height: 100px;
+        }
+        form button {
+            background: #d6336c;
             color: white;
             border: none;
-            padding: 12px;
-            border-radius: 5px;
+            border-radius: 15px;
+            padding: 14px;
+            font-size: 1.2rem;
             cursor: pointer;
-            font-size: 16px;
+            transition: background 0.3s ease;
         }
-        button:hover {
-            background: #0056b3;
+        form button:hover {
+            background: #a02249;
         }
     </style>
 </head>
 <body>
-
     <div class="container">
-        <h1>Edit Post</h1>
+        <h1>{% if form.instance.pk %}Edit Post{% else %}New Post{% endif %}</h1>
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit">Save Changes</button>
+            <button type="submit">{% if form.instance.pk %}Save Changes{% else %}Create Post{% endif %}</button>
         </form>
     </div>
-
 </body>
 </html>

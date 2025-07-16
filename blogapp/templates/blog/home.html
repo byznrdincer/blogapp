@@ -1,106 +1,136 @@
+<!-- Örnek: blog/home.html pembe tonlarında tasarım -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Home</title>
-    <style>
-        body {
-            background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        .navbar {
-            backdrop-filter: blur(10px);
-            background-color: rgba(0, 0, 0, 0.4);
-            padding: 10px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 8px;
-            transition: background 0.3s;
-        }
-        .navbar a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-        .container {
-            max-width: 800px;
-            margin: 40px auto;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(15px);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-        }
-        h1 {
-            text-align: center;
-            color: white;
-            margin-bottom: 30px;
-        }
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-        li {
-            background: rgba(255, 255, 255, 0.3);
-            margin: 10px 0;
-            padding: 15px;
-            border-radius: 10px;
-            backdrop-filter: blur(5px);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        a.btn {
-            background: #007BFF;
-            color: white;
-            padding: 8px 12px;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-left: 5px;
-            transition: 0.3s;
-        }
-        a.btn:hover {
-            background: #0056b3;
-        }
-        .delete {
-            background: #dc3545;
-        }
-        .delete:hover {
-            background: #b02a37;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blog Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ffe0f0 0%, #ffc1e3 100%);
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      color: #5a2a4d;
+    }
+    .navbar {
+      background: #f7c6d9;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      box-shadow: 0 2px 10px rgba(255, 182, 193, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-radius: 0 0 20px 20px;
+    }
+    .navbar a {
+      color: #5a2a4d;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 12px;
+      transition: background 0.3s ease;
+      background: #fce4f1;
+      box-shadow: 0 2px 5px rgba(255, 182, 193, 0.6);
+    }
+    .navbar a:hover {
+      background: #f9c1d3;
+      box-shadow: 0 4px 15px rgba(255, 145, 183, 0.8);
+      color: #3e1f35;
+    }
+    .container {
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background: #fff0f6;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(255, 192, 203, 0.3);
+    }
+    h1 {
+      text-align: center;
+      font-weight: 700;
+      font-size: 2.4rem;
+      margin-bottom: 2rem;
+      color: #a32958;
+      letter-spacing: 1.3px;
+      text-shadow: 1px 1px 3px #f3a0c4;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    ul li {
+      background: #f9c1d3;
+      margin: 1rem 0;
+      padding: 1.3rem 1.6rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(255, 182, 193, 0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    ul li:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(255, 105, 180, 0.6);
+    }
+    ul li a {
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: #5a2a4d;
+      flex-grow: 1;
+    }
+    ul li p {
+      margin: 0 1rem;
+      color: #7e3e58;
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+    .btn {
+      background-color: #a32958;
+      color: white;
+      padding: 8px 15px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 4px 8px #c35078cc;
+      transition: background-color 0.3s ease;
+      font-size: 0.9rem;
+    }
+    .btn:hover {
+      background-color: #7e2243;
+      box-shadow: 0 6px 14px #a3265ecc;
+    }
+  </style>
 </head>
 <body>
 
-    <div class="navbar">
-        <a href="{% url 'home' %}">Home</a>
-        <a href="{% url 'post_new' %}">New Post</a>
-    </div>
+  <nav class="navbar">
+    <a href="{% url 'home' %}">Home</a>
+    <a href="{% url 'post_new' %}">New Post</a>
+  </nav>
 
-    <div class="container">
-        <h1>My Blog</h1>
-        <ul>
-            {% for post in posts %}
-            <li>
-                <div>
-                    <a href="{% url 'post_detail' post.id %}"><strong>{{ post.title }}</strong></a><br>
-                    <small>{{ post.date_posted }}</small>
-                </div>
-                <div>
-                    <a href="{% url 'post_edit' post.id %}" class="btn">Edit</a>
-                    <a href="{% url 'post_delete' post.id %}" class="btn delete">Delete</a>
-                </div>
-            </li>
-            {% endfor %}
-        </ul>
-    </div>
+  <div class="container">
+    <h1>Welcome to the Blog</h1>
+    <ul>
+      {% for post in posts %}
+      <li>
+        <a href="{% url 'post_detail' post.id %}">{{ post.title }}</a>
+        <p>{{ post.date_posted|date:"M d, Y" }}</p>
+        <a href="{% url 'post_edit' post.id %}" class="btn">Edit</a>
+        <a href="{% url 'post_delete' post.id %}" class="btn" style="background:#d44;">Delete</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
 
 </body>
 </html>
