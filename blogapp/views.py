@@ -2,6 +2,9 @@ from django.shortcuts import render,get_object_or_404,redirect
 from .models import Post,Comments
 from .forms import PostForm,CommentsForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login
+
 
 def home(request):
     posts=Post.objects.all()
@@ -60,8 +63,17 @@ def profile_view(request):
     else:
         form = ProfileUpdateForm(instance=profile)
 
-    return render(request, 'blogapp/profile.html', {'form': form})
+    return render(request, 'blog/profile.html', {'form': form})
 
-
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('home')
+    else:
+        form = UserCreationForm()
+    return render(request, 'blog/register.html', {'form': form})
 
 

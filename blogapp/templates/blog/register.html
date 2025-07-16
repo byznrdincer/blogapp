@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kayıt Ol</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ffe0f0 0%, #ffc1e3 100%);
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      color: #5a2a4d;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .form-container {
+      background: #fff0f6;
+      padding: 2rem 3rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(255, 192, 203, 0.4);
+      max-width: 450px;
+      width: 90%;
+    }
+    h2 {
+      text-align: center;
+      font-size: 2rem;
+      color: #a32958;
+      margin-bottom: 1.5rem;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    input {
+      padding: 0.8rem;
+      border: 1px solid #f5b6ce;
+      border-radius: 10px;
+      font-size: 1rem;
+    }
+    button {
+      padding: 0.8rem;
+      border: none;
+      border-radius: 12px;
+      background-color: #a32958;
+      color: white;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 10px #c35078cc;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #7e2243;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Kayıt Ol</h2>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Kayıt Ol</button>
+    </form>
+  </div>
+</body>
+</html>
