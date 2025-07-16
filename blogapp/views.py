@@ -7,7 +7,7 @@ def home(request):
     return render (request,'blog/home.html',{'posts':posts})
 
 def post_detail(request,id):
-    post=get_object_or_404(Post,id)
+    post=get_object_or_404(Post,id=id)
     comments=post.comments.all()
     if request.method=="POST":
         comment_form=CommentsForm(request.POST)
@@ -18,7 +18,7 @@ def post_detail(request,id):
             return redirect('post_detail',id=post.id)
     else:
         comment_form=CommentsForm()
-    return render(request,'blog/post_detail.html',{'post':post,'comments':comments,'comments_form':comment_form})
+    return render(request,'blog/post_detail.html',{'post':post,'comments':comments,'comment_form':comment_form})
     
 def post_new(request):
     if request.method=="POST":

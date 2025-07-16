@@ -14,7 +14,7 @@ class Comments(models.Model):
     name=models.CharField(max_length=100)
     email=models.EmailField()
     body=models.TextField()
-    date_added=models.DateTimeFiel(default=timezone.now)
+    date_added=models.DateTimeField(default=timezone.now)
     
     def __str__(self):
      return f'Comment by {self.name}'
